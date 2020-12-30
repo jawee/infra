@@ -1,0 +1,10 @@
+---
+- include_tasks: install-docker.yml
+- include_tasks: install-docker-compose.yml
+- include_tasks: add-user-to-docker.yml
+
+- name: Ensure Docker is started and enabled at boot.
+  service:
+    name: docker
+    state: started
+    enabled: true

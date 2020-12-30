@@ -1,0 +1,4 @@
+- name: restart couchpotato
+  shell:
+    chdir: /home/figge/containers/couchpotato
+    cmd: "{{ docker_update_command }}"

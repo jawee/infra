@@ -1,0 +1,17 @@
+---
+version: "2.1"
+services:
+  couchpotato:
+    image: linuxserver/couchpotato
+    container_name: couchpotato
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Stockholm
+      - UMASK_SET=022
+    volumes:
+      - ./config:/config
+      - /mnt/Filmer:/Filmer
+    ports:
+      - 5050:5050
+    restart: unless-stopped
