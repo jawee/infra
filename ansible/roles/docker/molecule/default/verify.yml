@@ -1,0 +1,12 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Ensure Docker is started and enabled.
+    service:
+      name: docker
+      state: started
+      enabled: true

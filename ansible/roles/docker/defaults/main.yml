@@ -1,3 +1,5 @@
+docker_user: figge
+
 # Service options.
 docker_service_state: started
 docker_service_enabled: true

@@ -6,5 +6,5 @@
 
 - name: Add user to group "docker"
   user:
-    name: "{{ user }}"
+    name: "{{ docker_user }}"
     group: docker
