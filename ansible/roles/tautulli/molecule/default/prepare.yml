@@ -1,0 +1,22 @@
+---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: "Install docker and compose"
+      include_role:
+        name: "docker"
+
+    - name: "Stop docker service"
+      service:
+        name: "docker"
+        state: "stopped"
+
+    - name: "Remove /var/lib/docker/aufs"
+      file:
+        state: absent
+        path: "/var/lib/docker/aufs"
+
+    - name: "Enable docker service"
+      service:
+        name: "docker"
+        state: "started"

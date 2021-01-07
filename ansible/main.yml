@@ -1,6 +1,6 @@
 ---
 - hosts: 
-  - proxmox-docker-tmp
+  - proxmox-test
   roles:
     #- role: geerlingguy.docker
     #  become: true
@@ -10,5 +10,7 @@
     #      - "{{ user }}"
     - docker
     #- sickchill
-    - couchpotato
+    #- couchpotato
     #- jenkins
+    - tautulli
+    - mount_remote_shares

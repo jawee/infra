@@ -1,0 +1,16 @@
+---
+version: "2.1"
+services:
+  tautulli:
+    image: linuxserver/tautulli:latest
+    container_name: tautulli
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Stockholm
+    volumes:
+      - ./config:/config
+      - ./logs:/logs
+    ports:
+      - 8083:8181
+    restart: unless-stopped

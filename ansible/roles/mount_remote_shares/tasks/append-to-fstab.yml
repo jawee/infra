@@ -1,0 +1,13 @@
+---
+- name: Add paths to fstab
+  become: true
+  blockinfile:
+    path: /etc/fstab
+    block: |
+      192.168.1.100:/volume1/Filmer /mnt/Filmer nfs rw,hard,intr 0 0
+      192.168.1.100:/volume1/Serier /mnt/Serier nfs rw,hard,intr 0 0
+      192.168.1.100:/volume1/Torrent /mnt/Torrent nfs rw,hard,intr 0 0
+
+- name: Mount -a
+  become: true
+  command: mount -a

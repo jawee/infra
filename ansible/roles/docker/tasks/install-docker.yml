@@ -1,8 +1,9 @@
 ---
   - name: install all dependencies
+    become: true
     apt:
       name: "{{item}}"
-      state: present
+      state: latest
       update_cache: yes
       cache_valid_time: 3600
     loop:
@@ -13,20 +14,24 @@
       - software-properties-common
 
   - name: add GPG key
+    become: true
     apt_key:
       url: https://download.docker.com/linux/ubuntu/gpg
       state: present
 
   - name: Add docker repository
+    become: true
     apt_repository:
       repo: deb https://download.docker.com/linux/ubuntu focal stable
       state: present
 
   - name: Install docker
+    become: true
     apt:
       name: "{{item}}"
       state: latest
       update_cache: yes
+      cache_valid_time: 3600
     loop:
       - docker-ce
       - docker-ce-cli

@@ -1,0 +1,8 @@
+---
+- name: Install nfs-common package.
+  become: true
+  apt:
+    name: nfs-common
+    update_cache: true
+    cache_valid_time: 3600
+    state: latest

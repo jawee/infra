@@ -1,0 +1,5 @@
+---
+- name: restart tautulli
+  shell:
+    chdir: /home/figge/containers/tautulli
+    cmd: "{{ docker_update_command }}"

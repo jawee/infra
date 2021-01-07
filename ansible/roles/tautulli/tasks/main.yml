@@ -1,0 +1,42 @@
+---
+
+- name: Make sure user exists
+  become: true
+  user:
+    name: "{{ docker_user.name }}"
+    uid: "{{ docker_user.id }}"
+
+- name: Create install directory
+  file:
+    path: /home/figge/containers/tautulli
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+- name: Create config directory
+  file:
+    path: /home/figge/containers/tautulli/config
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+- name: Create logs directory
+  file:
+    path: /home/figge/containers/tautulli/logs
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+
+- name: Install compose file
+  copy:
+    src: files/docker-compose.yml
+    dest: /home/figge/containers/tautulli/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: /usr/local/bin/docker-compose -f %s config
+  notify: restart tautulli
+  become: true

@@ -1,5 +1,7 @@
-docker_user: figge
-
+docker_user:
+  id: 1000
+  name: figge
+  
 # Service options.
 docker_service_state: started
 docker_service_enabled: true

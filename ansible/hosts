@@ -12,4 +12,7 @@
 #[linode]
 #jawee.se
 
+[test]
+proxmox-test
+
 

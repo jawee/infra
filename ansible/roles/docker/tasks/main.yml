@@ -3,7 +3,13 @@
 - include_tasks: install-docker-compose.yml
 - include_tasks: add-user-to-docker.yml
 
+- name: Reboot machine
+  become: true
+  reboot:
+    reboot_timeout: 3600
+
 - name: Ensure Docker is started and enabled at boot.
+  become: true
   service:
     name: docker
     state: started
