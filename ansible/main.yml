@@ -1,4 +1,23 @@
 ---
+- name: Update servers
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Run apt upgrade
+      apt:
+        upgrade: 'yes'
+        update_cache: 'yes'
+
+    - name: Run dist-upgrade
+      apt:
+        upgrade: 'dist'
+    
+    - name: Run autoremove
+      apt:
+        autoremove: 'yes'
+
+
 - hosts: 
   - proxmox-test
   roles:
@@ -14,3 +33,9 @@
     #- jenkins
     - tautulli
     - mount_remote_shares
+    - librespeed
+
+# - hosts:
+#   - proxmox-docker
+#   roles:
+#   - librespeed

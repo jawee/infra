@@ -1,0 +1,5 @@
+---
+- name: restart librespeed
+  shell:
+    chdir: /home/figge/containers/librespeed
+    cmd: "{{ docker_update_command }}"
