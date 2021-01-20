@@ -1,3 +1,4 @@
+---
 - name: Create install directory
   file:
     path: /home/figge/containers/couchpotato
@@ -16,7 +17,7 @@
 
 
 - name: Install compose file
-  template:
+  copy:
     src: files/docker-compose.yml
     dest: /home/figge/containers/couchpotato/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
