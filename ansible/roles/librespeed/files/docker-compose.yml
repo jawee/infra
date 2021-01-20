@@ -1,7 +1,7 @@
 ---
 version: "2.1"
 services:
-  tautulli:
+  librespeed:
     image: ghcr.io/linuxserver/librespeed
     container_name: librespeed
     environment:
