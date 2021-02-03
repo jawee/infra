@@ -1,0 +1,4 @@
+- name: restart sonarr
+  shell:
+    chdir: /home/figge/containers/sonarr
+    cmd: "{{ docker_update_command }}"

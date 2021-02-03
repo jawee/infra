@@ -1,0 +1,27 @@
+---
+- name: Create install directory
+  file:
+    path: /home/figge/containers/sonarr
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+- name: Create config directory
+  file:
+    path: /home/figge/containers/sonarr/config
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+
+- name: Install compose file
+  copy:
+    src: files/docker-compose.yml
+    dest: /home/figge/containers/sonarr/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    # validate: /usr/bin/docker-compose -f %s config
+  notify: restart sonarr
+  become: true
