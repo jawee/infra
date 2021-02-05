@@ -1,0 +1,4 @@
+- name: restart radarr
+  shell:
+    chdir: /home/figge/containers/radarr
+    cmd: "{{ docker_update_command }}"
