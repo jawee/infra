@@ -1,0 +1,10 @@
+---
+# tasks file for jinja-test
+
+- name: Echo
+  ansible.builtin.debug:
+    var: url
+
+- name: Echo
+  ansible.builtin.debug:
+    var: ports

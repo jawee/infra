@@ -1,0 +1,9 @@
+server {
+    listen 80;
+    server_name subdomain.domain.tld;
+
+    location / {
+        proxy_pass http://<internal-ip-to-point-at>:<port>;
+        proxy_buffering off;
+    }
+}

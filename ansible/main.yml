@@ -1,25 +1,25 @@
 ---
-- name: Update servers
-  hosts: all
-  become: yes
+# - name: Update servers
+#   hosts: all
+#   become: yes
 
-  tasks:
-    - name: Run apt upgrade
-      apt:
-        upgrade: 'yes'
-        update_cache: 'yes'
+#   tasks:
+#     - name: Run apt upgrade
+#       apt:
+#         upgrade: 'yes'
+#         update_cache: 'yes'
 
-    - name: Run dist-upgrade
-      apt:
-        upgrade: 'dist'
+#     - name: Run dist-upgrade
+#       apt:
+#         upgrade: 'dist'
     
-    - name: Run autoremove
-      apt:
-        autoremove: 'yes'
+#     - name: Run autoremove
+#       apt:
+#         autoremove: 'yes'
 
 
 - hosts: 
-  - proxmox-test
+  - localhost
   roles:
     #- role: geerlingguy.docker
     #  become: true
@@ -27,13 +27,17 @@
     #    docker_package: "{{ 'docker-ce' if ansible_os_family == 'Debian' else 'docker' }}"
     #    docker_users:
     #      - "{{ user }}"
-    - docker
+    # - docker
     #- sickchill
     #- couchpotato
     #- jenkins
-    - tautulli
-    - mount_remote_shares
-    - librespeed
+    # - tautulli
+    # - mount_remote_shares
+    # - librespeed
+    - role: jinja-test
+      vars:
+        url: "192.168.1.131231"
+        ports: 8080
 
 # - hosts:
 #   - proxmox-docker

@@ -12,7 +12,10 @@
 #[linode]
 #jawee.se
 
-[test]
-proxmox-test
+#[test]
+#proxmox-test
+
+[local]
+localhost ansible_connection=local
 
 
