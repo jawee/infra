@@ -19,7 +19,7 @@
 
 
 - hosts: 
-  - localhost
+  - proxmox-test
   roles:
     #- role: geerlingguy.docker
     #  become: true
@@ -37,13 +37,13 @@
     - role: jinja-test
       vars:
         external_domain: "something.test.something.se"
-        internal_ip: "10.1.10.2"
+        internal_ip: "127.0.0.1"
         internal_port: 80
         service_name: "test1"
     - role: jinja-test
       vars:
         external_domain: "something2.test.something.se"
-        internal_ip: "10.1.10.2"
+        internal_ip: "127.0.0.1"
         internal_port: 80
         service_name: "test2"
 
