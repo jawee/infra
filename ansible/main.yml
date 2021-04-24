@@ -1,0 +1,53 @@
+---
+# - name: Update servers
+#   hosts: all
+#   become: yes
+
+#   tasks:
+#     - name: Run apt upgrade
+#       apt:
+#         upgrade: 'yes'
+#         update_cache: 'yes'
+
+#     - name: Run dist-upgrade
+#       apt:
+#         upgrade: 'dist'
+    
+#     - name: Run autoremove
+#       apt:
+#         autoremove: 'yes'
+
+
+- hosts: 
+  - localhost
+  roles:
+    #- role: geerlingguy.docker
+    #  become: true
+    ##  vars: 
+    #    docker_package: "{{ 'docker-ce' if ansible_os_family == 'Debian' else 'docker' }}"
+    #    docker_users:
+    #      - "{{ user }}"
+    # - docker
+    #- sickchill
+    #- couchpotato
+    #- jenkins
+    # - tautulli
+    # - mount_remote_shares
+    # - librespeed
+    - role: jinja-test
+      vars:
+        external_domain: "something.test.something.se"
+        internal_ip: "10.1.10.2"
+        internal_port: 80
+        service_name: "test1"
+    - role: jinja-test
+      vars:
+        external_domain: "something2.test.something.se"
+        internal_ip: "10.1.10.2"
+        internal_port: 80
+        service_name: "test2"
+
+# - hosts:
+#   - proxmox-docker
+#   roles:
+#   - librespeed
