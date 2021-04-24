@@ -1,10 +1,7 @@
 ---
 # tasks file for jinja-test
 
-- name: Echo
-  ansible.builtin.debug:
-    var: url
-
-- name: Echo
-  ansible.builtin.debug:
-    var: ports
+- name: Create {{ service_name }}.config using Jinja2
+  template:
+    src: config.j2
+    dest: /home/figge/projects/infra/ansible/{{ service_name }}.config
