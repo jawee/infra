@@ -1,0 +1,22 @@
+---
+# Create file and wrrite to /etc/nginx/sites-available/
+- name: Create {{ service_name }}.conf in /etc/nginx/sites-available
+  template:
+    src: config.j2
+    dest: /etc/nginx/sites-available/{{ service_name }}.conf
+  become: yes
+
+# Symlink file to /etc/nginx/sites-enabled/
+- name: Symlink {{ service_name }}.conf to /etc/nginx/sites-enabled/
+  file:
+    src: /etc/nginx/sites-available/{{ service_name }}.conf
+    dest: /etc/nginx/sites-enabled/{{ service_name }}.conf
+    state: link
+  become: yes
+
+# Restart nginx
+- name: Restart nginx
+  service:
+    name: nginx
+    state: reloaded
+  become: yes

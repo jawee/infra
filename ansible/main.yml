@@ -18,8 +18,20 @@
 #         autoremove: 'yes'
 
 
+- hosts:
+  - jawee.se
+  roles:
+    - role: nginx-config-external
+      vars:
+        external_domain: "sonarr.local.jawee.se"
+        internal_ip: "10.1.10.2"
+        internal_port: 80
+        service_name: "sonarr"
+        user: "figge"
+
+
 - hosts: 
-  - proxmox-test
+  - proxmox-nginxproxy
   roles:
     #- role: geerlingguy.docker
     #  become: true
@@ -34,13 +46,13 @@
     # - tautulli
     # - mount_remote_shares
     # - librespeed
-    - role: jinja-test
+    - role: nginx-config-internal
       vars:
         external_domain: "something.test.something.se"
         internal_ip: "127.0.0.1"
         internal_port: 80
         service_name: "test1"
-    - role: jinja-test
+    - role: nginx-config-internal
       vars:
         external_domain: "something2.test.something.se"
         internal_ip: "127.0.0.1"
